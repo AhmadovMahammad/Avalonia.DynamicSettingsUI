@@ -1,11 +1,10 @@
-using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
-using Avalonia.Data.Core.Plugins;
 using System.Linq;
-using Avalonia.Markup.Xaml;
+
+using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Data.Core.Plugins;
 using Avalonia.DynamicSettingsUI.Sample.ViewModels;
 using Avalonia.DynamicSettingsUI.Sample.Views;
+using Avalonia.Markup.Xaml;
 
 namespace Avalonia.DynamicSettingsUI.Sample;
 
@@ -35,11 +34,11 @@ public partial class App : Application
     private void DisableAvaloniaDataAnnotationValidation()
     {
         // Get an array of plugins to remove
-        var dataValidationPluginsToRemove =
+        DataAnnotationsValidationPlugin[] dataValidationPluginsToRemove =
             BindingPlugins.DataValidators.OfType<DataAnnotationsValidationPlugin>().ToArray();
 
         // remove each entry found
-        foreach (var plugin in dataValidationPluginsToRemove)
+        foreach (DataAnnotationsValidationPlugin? plugin in dataValidationPluginsToRemove)
         {
             BindingPlugins.DataValidators.Remove(plugin);
         }

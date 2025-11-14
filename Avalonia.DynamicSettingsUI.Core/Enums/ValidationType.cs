@@ -1,0 +1,30 @@
+﻿namespace Avalonia.DynamicSettingsUI.Core.Enums;
+
+public enum ValidationType
+{
+    None,
+    NotEmpty,
+    NotNull,
+    NotWhiteSpace,
+    Positive,
+    Negative,
+    Range,
+    GreaterThan,
+    LessThan,
+    MinLength,
+    MaxLength,
+    ExactLength,
+    Regex,
+    Email,
+    Url,
+    AlphaOnly,
+    AlphaNumeric,
+    NoSpecialChars,
+    FileExists,
+    DirectoryExists,
+    FileExtension,
+    MaxFileSize,
+    PastDate,
+    FutureDate,
+    DateRange,
+}
