@@ -10,3 +10,4 @@ C:\Users\mahammada\source\repos\side-projects\Avalonia.DynamicSettingsUI\Avaloni
 C:\Users\mahammada\source\repos\side-projects\Avalonia.DynamicSettingsUI\Avalonia.DynamicSettingsUI.Core\obj\Debug\net10.0\refint\Avalonia.DynamicSettingsUI.Core.dll
 C:\Users\mahammada\source\repos\side-projects\Avalonia.DynamicSettingsUI\Avalonia.DynamicSettingsUI.Core\obj\Debug\net10.0\Avalonia.DynamicSettingsUI.Core.pdb
 C:\Users\mahammada\source\repos\side-projects\Avalonia.DynamicSettingsUI\Avalonia.DynamicSettingsUI.Core\obj\Debug\net10.0\ref\Avalonia.DynamicSettingsUI.Core.dll
+C:\Users\mahammada\source\repos\side-projects\Avalonia.DynamicSettingsUI\Avalonia.DynamicSettingsUI.Core\obj\Debug\net10.0\Avalonia.DynamicSettingsUI.Core.csproj.AssemblyReference.cache

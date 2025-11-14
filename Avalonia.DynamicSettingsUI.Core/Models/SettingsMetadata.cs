@@ -4,7 +4,7 @@ using Avalonia.DynamicSettingsUI.Core.Enums;
 
 namespace Avalonia.DynamicSettingsUI.Core.Models;
 
-public class SettingMetaData
+public class SettingsMetadata
 {
     public PropertyInfo PropertyInfo { get; set; } = null!;
     public string Category { get; set; } = string.Empty;
