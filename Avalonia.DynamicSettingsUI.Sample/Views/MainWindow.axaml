@@ -6,8 +6,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:Avalonia.DynamicSettingsUI.Sample.ViewModels"
     Title="Avalonia.DynamicSettingsUI.Sample"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    Width="400"
+    Height="450"
     x:DataType="vm:MainWindowViewModel"
     Icon="/Assets/avalonia-logo.ico"
     mc:Ignorable="d">
