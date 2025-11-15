@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Collections.ObjectModel;
+using System.Reflection;
 
 using Avalonia.Controls;
 using Avalonia.DynamicSettingsUI.Core.Binding;
@@ -40,13 +41,32 @@ public class SettingsControlFactory
 
         foreach (var settings in settingsGroups)
         {
+            // EditorSettings -> Editor
             string groupName = settings.GetType().Name.Replace("Settings", "");
+
+            List<SettingsMetadata> allMetadatas = [.. MetadataReader.GetMetaData(settings)];
+
+            IOrderedEnumerable<IGrouping<string, SettingsMetadata>> categoryGroups = allMetadatas
+                .GroupBy(m => m.Category)
+                .OrderBy(g => g.Key);
+
+            ObservableCollection<CategoryGroup> categories = [];
+
+            foreach (var categoryGroup in categoryGroups)
+            {
+                categories.Add(new CategoryGroup
+                {
+                    Name = categoryGroup.Key,
+                    GroupName = groupName,
+                    Metadatas = [.. categoryGroup],
+                    SettingsInstance = settings
+                });
+            }
 
             groupLayers.Add(new SettingsGroupLayer
             {
                 Name = groupName,
-                Metadatas = MetadataReader.GetMetaData(settings),
-                SettingsInstance = settings
+                Categories = categories
             });
         }
 

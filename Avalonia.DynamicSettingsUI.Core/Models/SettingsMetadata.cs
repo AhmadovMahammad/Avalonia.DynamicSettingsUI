@@ -2,8 +2,6 @@
 
 using Avalonia.DynamicSettingsUI.Core.Enums;
 
-using CommunityToolkit.Mvvm.ComponentModel;
-
 namespace Avalonia.DynamicSettingsUI.Core.Models;
 
 public class SettingsMetadata
@@ -16,5 +14,4 @@ public class SettingsMetadata
     public object? Value { get; set; }
     public object? DefaultValue { get; set; }
     public string[]? Options { get; set; }
-    public string GroupName { get; set; } = string.Empty;
 }
