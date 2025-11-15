@@ -15,7 +15,7 @@ internal sealed class SettingsControlBuilder(
     ControlFactoryRegistry controlFactoryRegistry,
     BindingStrategyRegistry bindingStrategyRegistry)
 {
-    private Panel _contentPanel = new Panel();
+    private readonly Panel _contentPanel = new Panel();
     private readonly Dictionary<string, Control> _categoryPanels = [];
 
     public Control BuildControl(IEnumerable<SettingsGroupLayer> groupLayers)
@@ -224,15 +224,13 @@ internal sealed class SettingsControlBuilder(
 
         if (controlFactoryRegistry.GetFactory(metadata.ControlType) is { } factory)
         {
-            var inputControl = factory.CreateControl(metadata);
+            Control? inputControl = factory.CreateControl(metadata);
 
             inputControl.DataContext = settingsInstance;
 
-            var bindingStrategy = bindingStrategyRegistry.GetStrategy(metadata.ControlType);
-
-            if (bindingStrategy != null)
+            if (bindingStrategyRegistry.GetStrategy(metadata.ControlType) is { } bindingStrategy)
             {
-                var binding = new Data.Binding(metadata.PropertyInfo.Name, BindingMode.TwoWay);
+                Data.Binding binding = new Data.Binding(metadata.PropertyInfo.Name, BindingMode.TwoWay);
                 bindingStrategy.ApplyBinding(binding, inputControl, metadata);
             }
 
