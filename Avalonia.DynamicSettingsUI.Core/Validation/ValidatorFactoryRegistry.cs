@@ -3,11 +3,11 @@ using Avalonia.DynamicSettingsUI.Core.Validation.Validators;
 
 namespace Avalonia.DynamicSettingsUI.Core.Validation;
 
-public class ValidatorFactory
+public class ValidatorFactoryRegistry
 {
     private readonly Dictionary<ValidationType, Func<IValidator>> _validators = [];
 
-    public ValidatorFactory()
+    public ValidatorFactoryRegistry()
     {
         RegisterDefaultValidators();
     }

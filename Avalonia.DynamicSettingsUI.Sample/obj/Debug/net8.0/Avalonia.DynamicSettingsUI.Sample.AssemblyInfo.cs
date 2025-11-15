@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Avalonia.DynamicSettingsUI.Sample")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+afe83872a8ea6aca93501478250104486a2de5e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2bee8c76a085618cdbf1d6997d0e55ccdb14750e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Avalonia.DynamicSettingsUI.Sample")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Avalonia.DynamicSettingsUI.Sample")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
