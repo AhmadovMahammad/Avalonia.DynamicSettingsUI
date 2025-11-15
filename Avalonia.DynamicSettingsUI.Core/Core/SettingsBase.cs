@@ -1,8 +1,10 @@
 ﻿using System.Text.Json;
 
+using CommunityToolkit.Mvvm.ComponentModel;
+
 namespace Avalonia.DynamicSettingsUI.Core.Core;
 
-public abstract class SettingsBase
+public abstract class SettingsBase : ObservableObject
 {
     public event Action? SettingsSaved;
 
@@ -13,16 +15,22 @@ public abstract class SettingsBase
 
     public abstract string PathToSave { get; }
 
-    public virtual T? Load<T>() where T : SettingsBase
+    public abstract void ApplySettings(object? deserialized);
+
+    public virtual void Load()
     {
         if (!File.Exists(PathToSave))
         {
-            return null;
+            return;
         }
 
         string json = File.ReadAllText(PathToSave);
 
-        return JsonSerializer.Deserialize<T>(json);
+        JsonDocument document = JsonDocument.Parse(json);
+
+        object? deserialized = JsonSerializer.Deserialize(document, GetType());
+
+        ApplySettings(deserialized);
     }
 
     public virtual void Save(JsonSerializerOptions? options)

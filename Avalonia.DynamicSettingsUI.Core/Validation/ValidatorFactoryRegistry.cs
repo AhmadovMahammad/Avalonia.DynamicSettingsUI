@@ -5,7 +5,7 @@ namespace Avalonia.DynamicSettingsUI.Core.Validation;
 
 public class ValidatorFactoryRegistry
 {
-    private readonly Dictionary<ValidationType, Func<IValidator>> _validators = [];
+    private readonly Dictionary<ValidationType, IValidator> _validators = [];
 
     public ValidatorFactoryRegistry()
     {
@@ -14,39 +14,38 @@ public class ValidatorFactoryRegistry
 
     private void RegisterDefaultValidators()
     {
-        Register(ValidationType.AlphaNumeric, () => new AlphaNumericValidator());
-        Register(ValidationType.AlphaOnly, () => new AlphaOnlyValidator());
-        Register(ValidationType.DateRange, () => new DateRangeValidator());
-        Register(ValidationType.DirectoryExists, () => new DirectoryExistsValidator());
-        Register(ValidationType.ExactLength, () => new ExactLengthValidator());
-        Register(ValidationType.Email, () => new EmailValidator());
-        Register(ValidationType.Email, () => new EmailValidator());
-        Register(ValidationType.FileExists, () => new FileExistsValidator());
-        Register(ValidationType.FileExtension, () => new FileExtensionValidator());
-        Register(ValidationType.FutureDate, () => new FutureDateValidator());
-        Register(ValidationType.GreaterThan, () => new GreaterThanValidator());
-        Register(ValidationType.LessThan, () => new LessThanValidator());
-        Register(ValidationType.MaxFileSize, () => new MaxFileSizeValidator());
-        Register(ValidationType.MaxLength, () => new MaxLengthValidator());
-        Register(ValidationType.MinLength, () => new MinLengthValidator());
-        Register(ValidationType.NoSpecialChars, () => new NoSpecialCharsValidator());
-        Register(ValidationType.NotEmpty, () => new NotEmptyValidator());
-        Register(ValidationType.NotNull, () => new NotNullValidator());
-        Register(ValidationType.NotWhiteSpace, () => new NotWhiteSpaceValidator());
-        Register(ValidationType.PastDate, () => new PastDateValidator());
-        Register(ValidationType.Positive, () => new PositiveValidator());
-        Register(ValidationType.Range, () => new RangeValidator());
-        Register(ValidationType.Regex, () => new RegexValidator());
-        Register(ValidationType.Url, () => new UrlValidator());
+        Register(new AlphaNumericValidator());
+        Register(new AlphaOnlyValidator());
+        Register(new DateRangeValidator());
+        Register(new DirectoryExistsValidator());
+        Register(new ExactLengthValidator());
+        Register(new EmailValidator());
+        Register(new FileExistsValidator());
+        Register(new FileExtensionValidator());
+        Register(new FutureDateValidator());
+        Register(new GreaterThanValidator());
+        Register(new LessThanValidator());
+        Register(new MaxFileSizeValidator());
+        Register(new MaxLengthValidator());
+        Register(new MinLengthValidator());
+        Register(new NoSpecialCharsValidator());
+        Register(new NotEmptyValidator());
+        Register(new NotNullValidator());
+        Register(new NotWhiteSpaceValidator());
+        Register(new PastDateValidator());
+        Register(new PositiveValidator());
+        Register(new RangeValidator());
+        Register(new RegexValidator());
+        Register(new UrlValidator());
     }
 
-    public void Register(ValidationType type, Func<IValidator> factory)
+    public void Register(IValidator validator)
     {
-        _validators[type] = factory;
+        _validators[validator.ValidationType] = validator;
     }
 
-    public IValidator? Create(ValidationType type)
+    public IValidator? GetValidator(ValidationType type)
     {
-        return _validators.TryGetValue(type, out Func<IValidator>? validator) ? validator.Invoke() : null;
+        return _validators.TryGetValue(type, out IValidator? validator) ? validator : null;
     }
 }

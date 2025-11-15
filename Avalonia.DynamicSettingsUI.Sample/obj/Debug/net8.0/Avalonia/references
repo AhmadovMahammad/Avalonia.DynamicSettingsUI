@@ -6,6 +6,7 @@ C:\Users\mahammada\.nuget\packages\avalonia.desktop\11.3.6\lib\net8.0\Avalonia.D
 C:\Users\mahammada\.nuget\packages\avalonia.diagnostics\11.3.6\lib\net8.0\Avalonia.Diagnostics.dll
 C:\Users\mahammada\.nuget\packages\avalonia\11.3.6\ref\net8.0\Avalonia.Dialogs.dll
 C:\Users\mahammada\.nuget\packages\avalonia\11.3.6\ref\net8.0\Avalonia.dll
+C:\Users\mahammada\source\repos\side-projects\Avalonia.DynamicSettingsUI\Avalonia.DynamicSettingsUI.Core\obj\Debug\net8.0\ref\Avalonia.DynamicSettingsUI.Core.dll
 C:\Users\mahammada\.nuget\packages\avalonia.fonts.inter\11.3.6\lib\net8.0\Avalonia.Fonts.Inter.dll
 C:\Users\mahammada\.nuget\packages\avalonia.freedesktop\11.3.6\lib\net8.0\Avalonia.FreeDesktop.dll
 C:\Users\mahammada\.nuget\packages\avalonia\11.3.6\ref\net8.0\Avalonia.Markup.dll
@@ -22,7 +23,7 @@ C:\Users\mahammada\.nuget\packages\avalonia\11.3.6\ref\net8.0\Avalonia.Vulkan.dl
 C:\Users\mahammada\.nuget\packages\avalonia.win32\11.3.6\lib\net8.0\Avalonia.Win32.Automation.dll
 C:\Users\mahammada\.nuget\packages\avalonia.win32\11.3.6\lib\net8.0\Avalonia.Win32.dll
 C:\Users\mahammada\.nuget\packages\avalonia.x11\11.3.6\lib\net8.0\Avalonia.X11.dll
-C:\Users\mahammada\.nuget\packages\communitytoolkit.mvvm\8.2.1\lib\net6.0\CommunityToolkit.Mvvm.dll
+C:\Users\mahammada\.nuget\packages\communitytoolkit.mvvm\8.4.0\lib\net8.0\CommunityToolkit.Mvvm.dll
 C:\Users\mahammada\.nuget\packages\harfbuzzsharp\8.3.1.1\lib\net8.0\HarfBuzzSharp.dll
 C:\Users\mahammada\.nuget\packages\microcom.runtime\0.11.0\lib\net5.0\MicroCom.Runtime.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\8.0.21\ref\net8.0\Microsoft.CSharp.dll

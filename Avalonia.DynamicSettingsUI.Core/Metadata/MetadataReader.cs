@@ -9,19 +9,7 @@ namespace Avalonia.DynamicSettingsUI.Core.Metadata;
 
 public static class MetadataReader
 {
-    public static IEnumerable<SettingsGroupLayer> GetMetaData(params SettingsBase[] settings)
-    {
-        foreach (var settingsBase in settings)
-        {
-            yield return new SettingsGroupLayer
-            {
-                Name = typeof(SettingsGroupLayer).Name,
-                Settings = GetInternalMetadata(settingsBase)
-            };
-        }
-    }
-
-    private static IEnumerable<SettingsMetadata> GetInternalMetadata(SettingsBase settingsBase)
+    public static IEnumerable<SettingsMetadata> GetMetaData(SettingsBase settingsBase)
     {
         PropertyInfo[]? propertyInfos = MetadataCache.GetProperties(settingsBase.GetType());
 

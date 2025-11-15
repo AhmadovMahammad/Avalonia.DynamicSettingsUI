@@ -74,3 +74,5 @@ C:\Users\mahammada\source\repos\side-projects\Avalonia.DynamicSettingsUI\Avaloni
 C:\Users\mahammada\source\repos\side-projects\Avalonia.DynamicSettingsUI\Avalonia.DynamicSettingsUI.Sample\obj\Debug\net8.0\Avalonia.DynamicSettingsUI.Sample.pdb
 C:\Users\mahammada\source\repos\side-projects\Avalonia.DynamicSettingsUI\Avalonia.DynamicSettingsUI.Sample\obj\Debug\net8.0\Avalonia.DynamicSettingsUI.Sample.genruntimeconfig.cache
 C:\Users\mahammada\source\repos\side-projects\Avalonia.DynamicSettingsUI\Avalonia.DynamicSettingsUI.Sample\obj\Debug\net8.0\ref\Avalonia.DynamicSettingsUI.Sample.dll
+C:\Users\mahammada\source\repos\side-projects\Avalonia.DynamicSettingsUI\Avalonia.DynamicSettingsUI.Sample\bin\Debug\net8.0\Avalonia.DynamicSettingsUI.Core.dll
+C:\Users\mahammada\source\repos\side-projects\Avalonia.DynamicSettingsUI\Avalonia.DynamicSettingsUI.Sample\bin\Debug\net8.0\Avalonia.DynamicSettingsUI.Core.pdb

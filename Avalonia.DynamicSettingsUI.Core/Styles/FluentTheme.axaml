@@ -1,0 +1,147 @@
+<Styles xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--  Toggle Button Style  -->
+    <Style Selector="ToggleButton.settings-toggle">
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundAltHighBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SystemControlForegroundBaseMediumBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <PathIcon
+                        Width="12"
+                        Height="12"
+                        Data="M 5.5 10.586 1.707 6.793 A 1 1 0 0 0 0.293 8.207 l 4.5 4.5 a 1 1 0 0 0 1.414 0 l 11 -11 A 1 1 0 0 0 15.793 0.293 L 5.5 10.586 Z"
+                        Foreground="White"
+                        IsVisible="{TemplateBinding IsChecked}" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="ToggleButton.settings-toggle:checked">
+        <Setter Property="Background" Value="#00437f" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <!--  Grid Splitter  -->
+    <Style Selector="GridSplitter.settings-splitter">
+        <Setter Property="Width" Value="1" />
+        <Setter Property="Background" Value="{DynamicResource SystemControlForegroundBaseLowBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}">
+                    <PathIcon Classes="settings-btn-tool settings-icon-tool" Data="M 24.002 15.75 C 22.207 15.75 20.752 14.2949 20.752 12.5 C 20.752 10.7051 22.207 9.25 24.002 9.25 C 25.7969 9.25 27.252 10.7051 27.252 12.5 C 27.252 14.2949 25.7969 15.75 24.002 15.75 Z M 24.002 27.25 C 22.207 27.25 20.752 25.7949 20.752 24 C 20.752 22.2051 22.207 20.75 24.002 20.75 C 25.7969 20.75 27.252 22.2051 27.252 24 C 27.252 25.7949 25.7969 27.25 24.002 27.25 Z M 20.752 35.5 C 20.752 37.2949 22.207 38.75 24.002 38.75 C 25.7969 38.75 27.252 37.2949 27.252 35.5 C 27.252 33.7051 25.7969 32.25 24.002 32.25 C 22.207 32.25 20.752 33.7051 20.752 35.5 Z" />
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <!--  Date Picker  -->
+    <Style Selector="DatePicker.settings-date-picker">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Padding" Value="4,2,4,2" />
+    </Style>
+
+    <!--  ComboBox  -->
+    <Style Selector="ComboBox.settings-combo">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Padding" Value="6,2" />
+    </Style>
+
+    <Style Selector="ComboBox.settings-combo ComboBoxItem">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Padding" Value="8,4" />
+    </Style>
+
+    <!--  Tool Buttons  -->
+    <Style Selector="Button.settings-btn-tool">
+        <Setter Property="Width" Value="24" />
+        <Setter Property="Height" Value="24" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
+    </Style>
+
+    <Style Selector="PathIcon.settings-icon-tool">
+        <Setter Property="Width" Value="14" />
+        <Setter Property="Height" Value="14" />
+        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <!--  Base Button  -->
+    <Style Selector="Button.settings-btn-base">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Padding" Value="10,5" />
+        <Setter Property="Background" Value="{DynamicResource ButtonBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ButtonBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}" />
+    </Style>
+
+    <!--  TextBox  -->
+    <Style Selector="TextBox.settings-textbox">
+        <Setter Property="Padding" Value="4,2" />
+        <Setter Property="BorderBrush" Value="{DynamicResource TextControlBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Background" Value="{DynamicResource TextControlBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
+    </Style>
+
+    <!--  ListBox Items  -->
+    <Style Selector="ListBoxItem">
+        <Setter Property="Padding" Value="6,3" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+    </Style>
+
+    <Style Selector="ListBoxItem:pointerover">
+        <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListLowBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+    </Style>
+
+    <Style Selector="ListBoxItem:selected">
+        <Setter Property="Background" Value="#00437f" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <!--  Settings Block  -->
+    <Style Selector="Border.settings-block">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Margin" Value="0,0,0,12" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="BorderThickness" Value="2,0,0,0" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SystemControlForegroundBaseLowBrush}" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Background" Duration="0:0:0.2" />
+                <BrushTransition Property="BorderBrush" Duration="0:0:0.2" />
+            </Transitions>
+        </Setter>
+    </Style>
+
+    <Style Selector="Border.settings-block:pointerover">
+        <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListLowBrush}" />
+        <Setter Property="BorderBrush" Value="#6FA8DC" />
+    </Style>
+
+</Styles>
