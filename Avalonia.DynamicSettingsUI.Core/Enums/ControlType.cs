@@ -7,7 +7,6 @@ public enum ControlType
     Numeric,
     Slider,
     Toggle,
-    CheckBox,
     Dropdown,
     RadioGroup,
     DatePicker,

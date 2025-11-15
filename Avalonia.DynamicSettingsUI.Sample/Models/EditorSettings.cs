@@ -58,13 +58,13 @@ public partial class EditorSettings : SettingsBase
 
     [property: Category("Behavior")]
     [property: Display("Format On Save", "Automatically format files on save")]
-    [property: ControlType(ControlType.CheckBox)]
+    [property: ControlType(ControlType.Toggle)]
     [property: Value(true)]
     [ObservableProperty] private bool _formatOnSave = true;
 
     [property: Category("Behavior")]
     [property: Display("Trim Trailing Whitespace", "Remove trailing spaces on save")]
-    [property: ControlType(ControlType.CheckBox)]
+    [property: ControlType(ControlType.Toggle)]
     [property: Value(true)]
     [ObservableProperty] private bool _trimTrailingWhitespace = true;
 

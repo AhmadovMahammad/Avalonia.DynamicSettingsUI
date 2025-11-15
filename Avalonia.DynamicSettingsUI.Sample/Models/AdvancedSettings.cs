@@ -18,7 +18,7 @@ public partial class AdvancedSettings : SettingsBase
 
     [property: Category("Developer")]
     [property: Display("Show Debug Console", "Display debug console at startup")]
-    [property: ControlType(ControlType.CheckBox)]
+    [property: ControlType(ControlType.Toggle)]
     [property: Value(false)]
     [ObservableProperty] private bool _showDebugConsole = false;
 
@@ -50,7 +50,7 @@ public partial class AdvancedSettings : SettingsBase
 
     [property: Category("Experimental")]
     [property: Display("Beta Channel", "Receive beta updates")]
-    [property: ControlType(ControlType.CheckBox)]
+    [property: ControlType(ControlType.Toggle)]
     [property: Value(false)]
     [ObservableProperty] private bool _betaChannel = false;
 

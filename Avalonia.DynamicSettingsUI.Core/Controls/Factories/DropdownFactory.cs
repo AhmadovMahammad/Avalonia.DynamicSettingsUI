@@ -5,19 +5,19 @@ using Avalonia.Layout;
 
 namespace Avalonia.DynamicSettingsUI.Core.Controls.Factories;
 
-public class TextBoxFactory : IControlFactory
+public class DropdownFactory : IControlFactory
 {
-    public ControlType ControlType => ControlType.TextBox;
+    public ControlType ControlType => ControlType.Dropdown;
 
     public Control CreateControl(SettingsMetadata metadata)
     {
-        return new TextBox
+        return new ComboBox
         {
-            Classes = { "settings-textbox" },
+            Classes = { "settings-combo" },
+            ItemsSource = metadata.Options,
             Width = 400,
             HorizontalAlignment = HorizontalAlignment.Left,
             VerticalAlignment = VerticalAlignment.Center,
-            VerticalContentAlignment = VerticalAlignment.Center,
         };
     }
 }

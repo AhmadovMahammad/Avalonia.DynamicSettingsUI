@@ -5,15 +5,15 @@ using Avalonia.Layout;
 
 namespace Avalonia.DynamicSettingsUI.Core.Controls.Factories;
 
-public class TextBoxFactory : IControlFactory
+public class NumericFactory : IControlFactory
 {
-    public ControlType ControlType => ControlType.TextBox;
+    public ControlType ControlType => ControlType.Numeric;
 
     public Control CreateControl(SettingsMetadata metadata)
     {
-        return new TextBox
+        return new NumericUpDown
         {
-            Classes = { "settings-textbox" },
+            Classes = { "settings-numeric" },
             Width = 400,
             HorizontalAlignment = HorizontalAlignment.Left,
             VerticalAlignment = VerticalAlignment.Center,

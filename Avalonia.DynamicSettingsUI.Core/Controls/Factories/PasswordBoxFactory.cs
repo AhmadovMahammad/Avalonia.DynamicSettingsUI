@@ -5,9 +5,9 @@ using Avalonia.Layout;
 
 namespace Avalonia.DynamicSettingsUI.Core.Controls.Factories;
 
-public class TextBoxFactory : IControlFactory
+public class PasswordBoxFactory : IControlFactory
 {
-    public ControlType ControlType => ControlType.TextBox;
+    public ControlType ControlType => ControlType.PasswordBox;
 
     public Control CreateControl(SettingsMetadata metadata)
     {
@@ -15,6 +15,7 @@ public class TextBoxFactory : IControlFactory
         {
             Classes = { "settings-textbox" },
             Width = 400,
+            PasswordChar = '*',
             HorizontalAlignment = HorizontalAlignment.Left,
             VerticalAlignment = VerticalAlignment.Center,
             VerticalContentAlignment = VerticalAlignment.Center,

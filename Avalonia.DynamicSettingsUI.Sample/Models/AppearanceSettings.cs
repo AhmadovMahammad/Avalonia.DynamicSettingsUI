@@ -60,7 +60,7 @@ public partial class AppearanceSettings : SettingsBase
 
     [property: Category("Layout")]
     [property: Display("Compact Mode", "Use compact spacing for UI elements")]
-    [property: ControlType(ControlType.CheckBox)]
+    [property: ControlType(ControlType.Toggle)]
     [property: Value(false)]
     [ObservableProperty] private bool _compactMode = false;
 

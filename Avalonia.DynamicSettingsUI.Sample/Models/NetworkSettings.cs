@@ -45,13 +45,13 @@ public partial class NetworkSettings : SettingsBase
 
     [property: Category("Telemetry")]
     [property: Display("Enable Telemetry", "Send anonymous usage data")]
-    [property: ControlType(ControlType.CheckBox)]
+    [property: ControlType(ControlType.Toggle)]
     [property: Value(false)]
     [ObservableProperty] private bool _enableTelemetry = false;
 
     [property: Category("Telemetry")]
     [property: Display("Crash Reports", "Send crash reports")]
-    [property: ControlType(ControlType.CheckBox)]
+    [property: ControlType(ControlType.Toggle)]
     [property: Value(true)]
     [ObservableProperty] private bool _enableCrashReports = true;
 

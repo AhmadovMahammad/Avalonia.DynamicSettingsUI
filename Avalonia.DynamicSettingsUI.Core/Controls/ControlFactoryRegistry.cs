@@ -15,7 +15,15 @@ public class ControlFactoryRegistry
 
     private void RegisterDefaultFactories()
     {
+        Register(new DropdownFactory());
+        Register(new NumericFactory());
+        Register(new PasswordBoxFactory());
+        Register(new SliderFactory());
         Register(new TextBoxFactory());
+        Register(new ToggleFactory());
+        Register(new FilePickerFactory(true));
+        Register(new FilePickerFactory(false));
+        Register(new FolderPickerFactory());
     }
 
     public void Register(IControlFactory factory)

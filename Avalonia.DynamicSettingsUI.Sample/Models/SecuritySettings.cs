@@ -38,13 +38,13 @@ public partial class SecuritySettings : SettingsBase
 
     [property: Category("Permissions")]
     [property: Display("Allow External Extensions", "Allow third-party extensions")]
-    [property: ControlType(ControlType.CheckBox)]
+    [property: ControlType(ControlType.Toggle)]
     [property: Value(true)]
     [ObservableProperty] private bool _allowExternalExtensions = true;
 
     [property: Category("Permissions")]
     [property: Display("Enable Script Execution", "Allow running scripts")]
-    [property: ControlType(ControlType.CheckBox)]
+    [property: ControlType(ControlType.Toggle)]
     [property: Value(false)]
     [ObservableProperty] private bool _enableScriptExecution = false;
 

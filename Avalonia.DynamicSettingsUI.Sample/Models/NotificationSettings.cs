@@ -24,19 +24,19 @@ public partial class NotificationSettings : SettingsBase
 
     [property: Category("Types")]
     [property: Display("Show Info Messages", "Display informational notifications")]
-    [property: ControlType(ControlType.CheckBox)]
+    [property: ControlType(ControlType.Toggle)]
     [property: Value(true)]
     [ObservableProperty] private bool _showInfo = true;
 
     [property: Category("Types")]
     [property: Display("Show Warnings", "Display warning notifications")]
-    [property: ControlType(ControlType.CheckBox)]
+    [property: ControlType(ControlType.Toggle)]
     [property: Value(true)]
     [ObservableProperty] private bool _showWarnings = true;
 
     [property: Category("Types")]
     [property: Display("Show Errors", "Display error notifications")]
-    [property: ControlType(ControlType.CheckBox)]
+    [property: ControlType(ControlType.Toggle)]
     [property: Value(true)]
     [ObservableProperty] private bool _showErrors = true;
 
