@@ -1,6 +1,9 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
+using Avalonia.Data;
 using Avalonia.DynamicSettingsUI.Core.Binding;
+using Avalonia.DynamicSettingsUI.Core.Core;
 using Avalonia.DynamicSettingsUI.Core.Models;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml.Templates;
@@ -12,7 +15,7 @@ internal sealed class SettingsControlBuilder(
     ControlFactoryRegistry controlFactoryRegistry,
     BindingStrategyRegistry bindingStrategyRegistry)
 {
-    private Panel? _contentPanel;
+    private Panel _contentPanel = new Panel();
     private readonly Dictionary<string, Control> _categoryPanels = [];
 
     public Control BuildControl(IEnumerable<SettingsGroupLayer> groupLayers)
@@ -66,8 +69,6 @@ internal sealed class SettingsControlBuilder(
         bodyGrid.Children.Add(splitter);
 
         // column 2: content panel
-        _contentPanel = new Panel();
-
         Grid.SetColumn(_contentPanel, 2);
 
         bodyGrid.Children.Add(_contentPanel);
@@ -81,8 +82,13 @@ internal sealed class SettingsControlBuilder(
         {
             foreach (CategoryGroup category in group.Categories)
             {
-                // create content panel here and add into dictionary
+                Control control = CreateCategoryPanel(category);
+
+                control.IsVisible = false;
+
                 string key = $"{group.Name}_{category.Name}";
+
+                _categoryPanels[key] = control;
             }
         }
 
@@ -94,38 +100,148 @@ internal sealed class SettingsControlBuilder(
             ItemTemplate = new FuncTreeDataTemplate<object>(
                 (element, _) =>
                 {
-                    if (element is SettingsGroupLayer group)
+                    return element switch
                     {
-                        return new TextBlock { Text = group.Name };
-                    }
-
-                    if (element is CategoryGroup category)
-                    {
-                        return new TextBlock { Text = category.Name };
-                    }
-
-                    return new TextBlock();
+                        SettingsGroupLayer group => new TextBlock { Text = group.Name },
+                        CategoryGroup category => new TextBlock { Text = category.Name },
+                        _ => new TextBlock { }
+                    };
                 },
                 element =>
                 {
-                    if (element is SettingsGroupLayer group)
+                    return element switch
                     {
-                        return group.Categories;
-                    }
-
-                    return new List<object>();
+                        SettingsGroupLayer group => group.Categories,
+                        _ => []
+                    };
                 }
             )
         };
 
-        SettingsGroupLayer? firstGroup = groupLayers.FirstOrDefault();
+        treeView.SelectionChanged += (s, e) =>
+        {
+            if (s is TreeView treeView1 && treeView1.SelectedItem is CategoryGroup category)
+            {
+                ShowCategoryPanel(category);
+            }
+        };
 
-        if (firstGroup?.Categories.Count > 0)
+        if (groupLayers.FirstOrDefault() is { Categories.Count: > 0 } firstGroup)
         {
             treeView.SelectedItem = firstGroup.Categories[0];
         }
 
         return treeView;
+    }
+
+    private void ShowCategoryPanel(CategoryGroup category)
+    {
+        if (_contentPanel == null)
+        {
+            return;
+        }
+
+        string key = $"{category.GroupName}_{category.Name}";
+
+        foreach (var panel in _categoryPanels)
+        {
+            panel.Value.IsVisible = panel.Key.Equals(key, StringComparison.OrdinalIgnoreCase);
+        }
+
+        _contentPanel.Children.Clear();
+
+        if (_categoryPanels.TryGetValue(key, out Control? control) && control != null)
+        {
+            _contentPanel.Children.Add(control);
+        }
+    }
+
+    private Control CreateCategoryPanel(CategoryGroup category)
+    {
+        ScrollViewer scrollViewer = new ScrollViewer
+        {
+            VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+            HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled,
+            Padding = new Thickness(20)
+        };
+
+        StackPanel stackPanel = new StackPanel();
+
+        Border headerBorder = new Border
+        {
+            BorderThickness = new Thickness(0, 0, 0, 1),
+            BorderBrush = new SolidColorBrush(Color.Parse("#00437f")),
+            Margin = new Thickness(0, 0, 0, 20),
+            Child = new TextBlock
+            {
+                Text = category.Name,
+                FontSize = 20,
+                FontWeight = FontWeight.Bold,
+                Margin = new Thickness(0, 0, 0, 8)
+            }
+        };
+
+        stackPanel.Children.Add(headerBorder);
+
+        foreach (SettingsMetadata metadata in category.Metadatas)
+        {
+            stackPanel.Children.Add(CreateSettingBlock(metadata, category.SettingsInstance));
+        }
+
+        scrollViewer.Content = stackPanel;
+
+        scrollViewer.IsVisible = false;
+
+        return scrollViewer;
+    }
+
+    private Control CreateSettingBlock(SettingsMetadata metadata, SettingsBase? settingsInstance)
+    {
+        Border border = new Border { Classes = { "settings-block" } };
+
+        StackPanel stackPanel = new StackPanel();
+
+        stackPanel.Children.Add(new TextBlock
+        {
+            Text = metadata.Name,
+            FontWeight = FontWeight.SemiBold,
+            Margin = new Thickness(0, 0, 0, 2)
+        });
+
+        // update grid, if boolean, description on right side of control
+
+        if (!string.IsNullOrWhiteSpace(metadata.Description))
+        {
+            stackPanel.Children.Add(new TextBlock
+            {
+                Text = metadata.Description,
+                FontSize = 11,
+                TextWrapping = TextWrapping.Wrap,
+                Margin = new Thickness(0, 0, 0, 6),
+                Opacity = 0.7
+            });
+        }
+
+        if (controlFactoryRegistry.GetFactory(metadata.ControlType) is { } factory)
+        {
+            var inputControl = factory.CreateControl(metadata);
+
+            inputControl.DataContext = settingsInstance;
+
+            var bindingStrategy = bindingStrategyRegistry.GetStrategy(metadata.ControlType);
+
+            if (bindingStrategy != null)
+            {
+                var binding = new Data.Binding(metadata.PropertyInfo.Name, BindingMode.TwoWay);
+                bindingStrategy.ApplyBinding(binding, inputControl, metadata);
+            }
+
+            stackPanel.Children.Add(inputControl);
+        }
+
+        border.Child = stackPanel;
+
+        return border;
     }
 
     private void CreateFooter(Grid mainGrid, IEnumerable<SettingsGroupLayer> groupLayers)

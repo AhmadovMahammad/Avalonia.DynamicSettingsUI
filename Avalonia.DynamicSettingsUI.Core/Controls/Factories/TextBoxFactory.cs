@@ -15,7 +15,7 @@ public class TextBoxFactory : IControlFactory
         {
             Classes = { "settings-textbox" },
             Width = 400,
-            HorizontalAlignment = HorizontalAlignment.Center,
+            HorizontalAlignment = HorizontalAlignment.Left,
             VerticalAlignment = VerticalAlignment.Center,
         };
 
